@@ -20,12 +20,7 @@ jobs:
     - name: Build project with xcodebuild
       run: |
         xcodebuild clean build \
-        -project YourProjectName.xcodeproj \
-        -scheme YourSchemeName \
+        -project SimpleAppSwiftUI.xcodeproj \
+        -scheme SimpleAppSwiftUI \
         -destination 'platform=iOS Simulator,name=iPhone 14' \
-        CODE_SIGNING_REQUIRED=NO \
-        CODE_SIGN_IDENTITY="" \
-        | xcpretty
-
-    # Nếu bạn chưa cài `xcpretty`, bạn có thể bỏ đoạn `| xcpretty`
 
