@@ -24,3 +24,11 @@ jobs:
         -scheme SimpleAppSwiftUI \
         -destination 'platform=iOS Simulator,name=iPhone 16' \
 
+    - name: Run UI Tests
+      run: |
+        xcodebuild test \
+        -project SimpleAppSwiftUI.xcodeproj \
+        -scheme SimpleAppSwiftUITests \
+        -destination 'platform=iOS Simulator,name=iPhone 16' \
+        -enableCodeCoverage YES
+
