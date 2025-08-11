@@ -1,26 +1,31 @@
-#name of your config
-name: Swift
+name: iOS Build
 
-#when to trigger the jobs
-on: 
-  push:
-    branches: [ master ] #trigger on each push to master
+on:
   pull_request:
-    branches: [ master ] #trigger on each PR for master
+    branches: [ develop ]  # Chỉ chạy khi có PR vào nhánh develop
 
-#list of jobs to perform
 jobs:
-  #the only job in the list, named `build`
-  build: 
-    #specify OS to run the jobs on
-    runs-on: macos-latest 
-    #sequential steps to run for the `build` job
-    steps: 
-      # step 1, use Marketplace action called Checkout@v2, to checkout the code
-    - uses: actions/checkout@v2 #'uses' keyword launches the Marketplace action
-      # step 2, verbosely build the package using the `swift` CLI
-    - name: Build
-      run: swift build -v #'run' keyword executes the command, as if it's run in terminal
-      # step 3, verbosely test the package using the `swift` CLI
-    - name: Run tests
-      run: swift test -v #'run' keyword executes the command, as if it's run in terminal
+  build:
+    name: Build iOS Project
+    runs-on: macos-latest   # Chạy trên máy ảo macOS
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v2   # Lấy source code từ PR
+
+    - name: Set up Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
+      # Có thể không cần nếu runner đã sẵn sàng
+
+    - name: Build project with xcodebuild
+      run: |
+        xcodebuild clean build \
+        -project YourProjectName.xcodeproj \
+        -scheme YourSchemeName \
+        -destination 'platform=iOS Simulator,name=iPhone 14' \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGN_IDENTITY="" \
+        | xcpretty
+
+    # Nếu bạn chưa cài `xcpretty`, bạn có thể bỏ đoạn `| xcpretty`
+
