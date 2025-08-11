@@ -1,5 +1,5 @@
 import SwiftUI
 
 @main
-struct SimpleAppSwiftUIApp: App {
+struct SimpleAppSwiftUIApp: App1 {
 }
