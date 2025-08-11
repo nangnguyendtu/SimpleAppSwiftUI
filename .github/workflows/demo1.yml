@@ -20,7 +20,7 @@ jobs:
     - name: Build project with xcodebuild
       run: |
         xcodebuild clean build \
-        -project YourProjectName.xcodeproj \
+        -project SimpleAppSwiftUI.xcodeproj \
         -scheme YourSchemeName \
         -destination 'platform=iOS Simulator,name=iPhone 14' \
         CODE_SIGNING_REQUIRED=NO \
