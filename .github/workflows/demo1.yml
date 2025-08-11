@@ -22,5 +22,5 @@ jobs:
         xcodebuild clean build \
         -project SimpleAppSwiftUI.xcodeproj \
         -scheme SimpleAppSwiftUI \
-        -destination 'platform=iOS Simulator,name=iPhone 14' \
+        -destination 'platform=iOS Simulator,name=iPhone 16' \
 
