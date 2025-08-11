@@ -15,6 +15,7 @@ class FirstViewModel: ObservableObject {
         TabItem(title: "Item7"),
         TabItem(title: "Item8"),
         TabItem(title: "Item9"),
+        TabItem(title: "Item10"),
     ]
     @Published var indexTabItemSelected = 0
 }
